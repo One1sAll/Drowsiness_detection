@@ -36,10 +36,10 @@ model = Sequential([
     Dense(128, activation='relu'), # 全连接层
     Dropout(0.5), # 随机失活使模型更好地收敛
 
-    # 输出层
+    # 输出层Fully Connected Layer
     Dense(2, activation='softmax')
 ])
-# 编译模型
+# 编译模型 Adam优化器、交叉熵损失函数和准确率作为评估指标
 model.compile(optimizer='adam',loss='categorical_crossentropy',metrics=['accuracy'])
 # 使用生成器进行模型训练
 model.fit_generator(train_batch, validation_data=valid_batch,epochs=15,steps_per_epoch=SPE ,validation_steps=VS)
