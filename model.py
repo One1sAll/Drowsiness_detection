@@ -13,10 +13,11 @@ def generator(dir, gen=image.ImageDataGenerator(rescale=1./255), shuffle=True,ba
 
     return gen.flow_from_directory(dir,batch_size=batch_size,shuffle=shuffle,color_mode='grayscale',class_mode=class_mode,target_size=target_size)
 
-BS= 32
-TS=(24,24)
+BS= 32 # batch size
+TS=(24,24) # target size
 train_batch= generator('data/train',shuffle=True, batch_size=BS,target_size=TS)
 valid_batch= generator('data/valid',shuffle=True, batch_size=BS,target_size=TS)
+# epoch数；train_batch.classes获取labels
 SPE= len(train_batch.classes)//BS
 VS = len(valid_batch.classes)//BS
 print(SPE,VS)
